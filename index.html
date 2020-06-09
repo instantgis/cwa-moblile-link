@@ -3,6 +3,45 @@
   <head></head>
   <body>
     <h1>CWA map deep linking example</h1>
-    <a href="intent://cwa.com?directLink=true&customer=0208Y249A#Intent;scheme=http;package=com.cwa.mobile;end">Start Map App</a>
+    <a href="intent://cwa.com?directLink=true&customer=0208Y249A#Intent;scheme=http;package=com.cwa.mobile;end">Click to start the CWA Android Map App and find customer 0208Y249A</a>
+    <p>
+      The anchor tag above is formatted as:
+      <br/>
+      <br/>
+      intent://cwa.com?directLink=true&customer=0208Y249A#Intent;scheme=http;package=com.cwa.mobile;end
+      <br/>
+      <br/>
+      The scheme is http
+      <br/>
+      The host is cwa.com
+      <br/>
+      Query parameters follow the ? and are
+      <br/>
+      directLink=true
+      <br/>
+      and
+      <br/>
+      customer=0208Y249A
+    </p>
+    This corresponds to the folloging Android Manifest entries
+    <br/>
+    <textarea rows="7" cols="100" style="border:none;">
+      <intent-filter>
+          <data android:host="cwa.com" android:scheme="http" />
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </textarea>
+    <hr>
+    Android should look for an app witg package com.cwa.mobile responding to this intent and invoke it with no prompt.
+    <br/>
+    Here are some more test cases...
+    <br/>
+    <a href="intent://cwa.com?directLink=true&customer=0605B014A#Intent;scheme=http;package=com.cwa.mobile;end">Customer 0605B014A</a>
+    <br/>
+    <a href="intent://cwa.com?directLink=true&customer=0608P1310#Intent;scheme=http;package=com.cwa.mobile;end">Customer 0608P1310</a>
+    <br/>
+    <a href="intent://cwa.com?directLink=true&customer=08100096P#Intent;scheme=http;package=com.cwa.mobile;end">Customer 08100096P</a>
   </body>
 </html>
